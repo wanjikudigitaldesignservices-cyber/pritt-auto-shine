@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Pritt Auto Shine Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Plus Jakarta Sans',sans-serif;background:#F8FAFC}h1,h2{font-family:'Outfit',sans-serif;font-weight:700}
+.login{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#1E3A8A}.lb{background:white;padding:48px;border-radius:12px;max-width:400px;width:100%;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.1)}.lb h2{color:#1E3A8A;margin-bottom:24px}.lb input{width:100%;padding:14px;border:1px solid #cbd5e1;border-radius:8px;margin-bottom:12px;font-size:1rem;font-family:'Plus Jakarta Sans',sans-serif}.lb button{width:100%;padding:14px;background:#F97316;color:white;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:1.1rem;font-family:'Outfit',sans-serif}
+.dash{display:none}.dh{background:#1E3A8A;color:white;padding:20px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}.dh h1{font-size:1.5rem}.dh button,.dh a{padding:8px 20px;border-radius:50px;border:none;cursor:pointer;font-weight:600;font-size:0.9rem;color:white;background:rgba(255,255,255,0.15);text-decoration:none;font-family:'Outfit',sans-serif}.be{background:#F97316!important}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:32px}.sc{background:white;padding:24px;border-radius:12px;box-shadow:0 4px 15px rgba(30,58,138,0.05)}.sl{font-size:0.9rem;color:#64748b;font-family:'Outfit',sans-serif;font-weight:600}.sv{font-size:2.5rem;font-weight:800;margin-top:4px;font-family:'Outfit',sans-serif}
+.tw{padding:0 32px 32px;overflow-x:auto}table{width:100%;border-collapse:collapse;background:white;border-radius:12px;overflow:hidden;box-shadow:0 4px 15px rgba(30,58,138,0.05)}th{background:#F8FAFC;color:#1E3A8A;padding:16px;text-align:left;font-size:0.9rem;font-family:'Outfit',sans-serif;border-bottom:2px solid #e2e8f0}td{padding:14px 16px;border-bottom:1px solid #f1f5f9;font-size:0.95rem;color:#334155}
+select.st{padding:6px 10px;border:1px solid #cbd5e1;border-radius:6px;font-family:'Plus Jakarta Sans',sans-serif}.del{background:none;border:none;color:#ef4444;cursor:pointer;font-size:1.2rem}
+@media(max-width:768px){.stats{grid-template-columns:1fr}}</style></head>
+<body>
+<div class="login" id="ls"><div class="lb"><h2>Pritt Auto Shine</h2><input type="text" id="u" value="admin"><input type="password" id="p" placeholder="Password"><button onclick="login()">Sign In</button></div></div>
+<div class="dash" id="dash">
+<div class="dh"><h1>Pritt Auto Dashboard</h1><div><button class="be" onclick="exp()">Export Data</button> <a href="index.html">View Site</a> <button onclick="logout()">Logout</button></div></div>
+<div class="stats"><div class="sc"><div class="sl">Total Bookings</div><div class="sv" id="st" style="color:#1E3A8A">0</div></div><div class="sc"><div class="sl">New Requests</div><div class="sv" id="sn" style="color:#F97316">0</div></div><div class="sc"><div class="sl">Completed</div><div class="sv" id="sd" style="color:#10b981">0</div></div></div>
+<div class="tw"><table><thead><tr><th>Date</th><th>Customer</th><th>Phone</th><th>Vehicle</th><th>Service</th><th>Location</th><th>Pref Date</th><th>Status</th><th></th></tr></thead><tbody id="tb"></tbody></table></div></div>
+<script>
+const K='pritt_bookings';if(sessionStorage.getItem('pritt_admin')==='true')showD();
+function login(){if(document.getElementById('u').value==='admin'&&document.getElementById('p').value==='admin123'){sessionStorage.setItem('pritt_admin','true');showD()}else alert('Invalid credentials')}
+function logout(){sessionStorage.removeItem('pritt_admin');location.reload()}
+function showD(){document.getElementById('ls').style.display='none';document.getElementById('dash').style.display='block';render()}
+function gd(){return JSON.parse(localStorage.getItem(K)||'[]').sort((a,b)=>new Date(b.submittedAt)-new Date(a.submittedAt))}
+function sv(d){localStorage.setItem(K,JSON.stringify(d))}
+function render(){const d=gd();document.getElementById('st').textContent=d.length;document.getElementById('sn').textContent=d.filter(x=>x.status==='New').length;document.getElementById('sd').textContent=d.filter(x=>x.status==='Completed').length;
+document.getElementById('tb').innerHTML=d.map(i=>`<tr><td>${new Date(i.submittedAt).toLocaleDateString('en-GB')}</td><td><strong>${i.name||'—'}</strong></td><td>${i.phone||'—'}</td><td>${i.car||'—'}</td><td>${i.service||'—'}</td><td>${i.address||'In-store'}</td><td>${i.date||'—'} ${i.time||''}</td><td><select class="st" onchange="upd(${i.id},this.value)">${['New','Contacted','Completed'].map(s=>`<option ${i.status===s?'selected':''}>${s}</option>`).join('')}</select></td><td><button class="del" onclick="del(${i.id})">✕</button></td></tr>`).join('')}
+function upd(id,s){const d=gd();const i=d.find(x=>x.id===id);if(i){i.status=s;sv(d);render()}}
+function del(id){if(!confirm('Delete this booking?'))return;sv(gd().filter(x=>x.id!==id));render()}
+function exp(){const d=gd();if(!d.length)return alert('No data');const h=['Date','Name','Phone','Car','Service','Address','Pref Date','Time','Status'];const r=d.map(i=>[new Date(i.submittedAt).toLocaleDateString(),i.name,i.phone,i.car,i.service,i.address||'In-store',i.date,i.time,i.status]);const c=[h,...r].map(r=>r.map(c=>`"${(c||'').replace(/"/g,'""')}"`).join(',')).join('\n');const b=new Blob([c],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='pritt_bookings.csv';a.click()}
+document.getElementById('p').addEventListener('keydown',e=>{if(e.key==='Enter')login()});
+</script></body></html>
