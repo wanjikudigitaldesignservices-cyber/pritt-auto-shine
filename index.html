@@ -1,89 +1,83 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Pritt Auto Shine | Auto Detailing & Valeting Services</title>
-    <meta name="description" content="Pritt Auto Shine offers premium auto detailing, mobile valeting, and professional car wash services. Book your mobile detail today.">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<title>Pritt Auto Shine | Auto Detailing &amp; Valeting Services</title>
+<meta content="Pritt Auto Shine offers premium auto detailing, mobile valeting, and professional car wash services. Book your mobile detail today." name="description"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
 </head>
 <body>
-    <nav class="navbar" id="navbar"><div class="nav-container">
-        <a href="#home" class="nav-logo">PRITT<span class="accent">SHINE</span></a>
-        <ul class="nav-links" id="navLinks"><li><a href="#home" class="nav-link active">Home</a></li><li><a href="#services" class="nav-link">Services</a></li><li><a href="#mobile" class="nav-link">Mobile Valeting</a></li><li><a href="#booking" class="nav-link">Book Now</a></li><li><a href="#contact" class="nav-link">Contact</a></li></ul>
-        <a href="tel:+254700000001" class="nav-cta">Call Us Now</a>
-        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
-    </div></nav>
-
-    <section id="home" class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-content">
-            <div class="hero-badge">✨ Premium Auto Detailing</div>
-            <h1>Make Your Car<br><span class="accent">Shine Like New.</span></h1>
-            <p class="hero-sub">Professional auto detailing and mobile valeting services. We bring the shine to your doorstep or at our dedicated center.</p>
-            <div class="hero-actions">
-                <a href="#booking" class="btn btn-primary">Book an Appointment</a>
-                <a href="#mobile" class="btn btn-outline">Mobile Services</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="features-bar">
-        <div class="container"><div class="fb-grid">
-            <div class="fb-item"><span class="fb-icon">💧</span><div><strong>Eco-Friendly</strong><p>Safe products used</p></div></div>
-            <div class="fb-item"><span class="fb-icon">⏱️</span><div><strong>Fast & Efficient</strong><p>Value for your time</p></div></div>
-            <div class="fb-item"><span class="fb-icon">🚗</span><div><strong>Mobile Service</strong><p>We come to you</p></div></div>
-            <div class="fb-item"><span class="fb-icon">⭐</span><div><strong>Top Rated</strong><p>Trusted by hundreds</p></div></div>
-        </div></div>
-    </section>
-
-    <section id="services" class="section bg-light">
-        <div class="container"><div class="section-header"><span class="tag">Our Services</span><h2>Detailing Packages</h2></div>
-        <div class="services-grid">
-            <div class="svc-card"><div class="svc-img ph-1">Express Wash</div><div class="svc-content"><h3>Express Wash</h3><p>Exterior hand wash, wheel cleaning, and tire dressing. Perfect for weekly maintenance.</p><button class="btn btn-small btn-full" onclick="bookSvc('Express Wash')">Book Service</button></div></div>
-            <div class="svc-card featured"><div class="svc-badge">Most Popular</div><div class="svc-img ph-2">Full Valet</div><div class="svc-content"><h3>Full Valet</h3><p>Comprehensive interior vacuuming, dashboard treatment, and full exterior detailing.</p><button class="btn btn-primary btn-full" onclick="bookSvc('Full Valet')">Book Service</button></div></div>
-            <div class="svc-card"><div class="svc-img ph-3">Showroom Detail</div><div class="svc-content"><h3>Showroom Detail</h3><p>Paint decontamination, machine polish, premium wax, and deep interior extraction.</p><button class="btn btn-small btn-full" onclick="bookSvc('Showroom Detail')">Book Service</button></div></div>
-        </div></div>
-    </section>
-
-    <section id="mobile" class="section split-section">
-        <div class="container"><div class="split-grid">
-            <div class="split-content">
-                <span class="tag">We Come To You</span>
-                <h2>Mobile Valeting Services</h2>
-                <p>Don't have time to visit us? Pritt Auto Shine offers fully equipped mobile valeting vans that come directly to your home or office.</p>
-                <ul class="check-list">
-                    <li>✓ Fully equipped with water and power</li>
-                    <li>✓ No mess left behind</li>
-                    <li>✓ Available at your home or workplace</li>
-                    <li>✓ Same premium quality, ultimate convenience</li>
-                </ul>
-                <a href="#booking" class="btn btn-primary" onclick="bookSvc('Mobile Valeting')">Book Mobile Valet</a>
-            </div>
-            <div class="split-img"><div class="ph-van">Mobile Detailing Van</div></div>
-        </div></div>
-    </section>
-
-    <section id="booking" class="section bg-light">
-        <div class="container"><div class="section-header"><span class="tag">Online Booking</span><h2>Schedule Your Shine</h2></div>
-        <div class="booking-wrap">
-            <form class="booking-form" id="bookingForm">
-                <div class="form-row"><div class="form-group"><label>Full Name</label><input type="text" name="name" required></div><div class="form-group"><label>Phone Number</label><input type="tel" name="phone" required></div></div>
-                <div class="form-row"><div class="form-group"><label>Vehicle Make/Model</label><input type="text" name="car" required></div><div class="form-group"><label>Service Type</label><select name="service" id="svcSelect" required><option value="">Select a package</option><option>Express Wash</option><option>Full Valet</option><option>Showroom Detail</option><option>Mobile Valeting</option></select></div></div>
-                <div class="form-group" id="addressGrp"><label>Service Address (if Mobile Valeting)</label><input type="text" name="address" placeholder="Enter your location"></div>
-                <div class="form-row"><div class="form-group"><label>Preferred Date</label><input type="date" name="date" required></div><div class="form-group"><label>Preferred Time</label><input type="time" name="time" required></div></div>
-                <button type="submit" class="btn btn-primary btn-full">Confirm Booking</button>
-            </form>
-        </div></div>
-    </section>
-
-    <footer class="footer" id="contact"><div class="container"><div class="footer-grid">
-        <div class="f-brand"><h3>PRITT<span class="accent">SHINE</span></h3><p>Premium auto detailing and mobile valeting services across Nairobi.</p></div>
-        <div class="f-contact"><h4>Contact Us</h4><p>📍 Westlands, Nairobi</p><p>📞 +254 700 000001</p><p>✉️ hello@prittautoshine.co.ke</p></div>
-        <div class="f-hours"><h4>Business Hours</h4><p>Monday - Saturday: 8am - 6pm</p><p>Sunday: Closed</p></div>
-    </div>
-    <div class="f-bottom"><p>© 2024 Pritt Auto Shine. All rights reserved. <a href="admin.html">Admin Login</a></p></div></div></footer>
-
-    <div class="toast" id="toast"></div>
-    <script src="script.js"></script>
+<nav class="navbar" id="navbar"><div class="nav-container">
+<a class="nav-logo" href="#home">PRITT<span class="accent">SHINE</span></a>
+<ul class="nav-links" id="navLinks"><li><a class="nav-link active" href="#home">Home</a></li><li><a class="nav-link" href="#services">Services</a></li><li><a class="nav-link" href="#mobile">Mobile Valeting</a></li><li><a class="nav-link" href="#booking">Book Now</a></li><li><a class="nav-link" href="#contact">Contact</a></li></ul>
+<a class="nav-cta" href="tel:+254700000001">Call Us Now</a>
+<button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</div></nav>
+<section class="hero" id="home">
+<div class="hero-bg" style=" background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://loremflickr.com/1200/800/car,polish?lock=100') !important; background-size: cover !important; background-position: center !important;"></div>
+<div class="hero-content">
+<div class="hero-badge">✨ Premium Auto Detailing</div>
+<h1>Make Your Car<br/><span class="accent">Shine Like New.</span></h1>
+<p class="hero-sub">Professional auto detailing and mobile valeting services. We bring the shine to your doorstep or at our dedicated center.</p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="#booking">Book an Appointment</a>
+<a class="btn btn-outline" href="#mobile">Mobile Services</a>
+</div>
+</div>
+</section>
+<section class="features-bar">
+<div class="container"><div class="fb-grid">
+<div class="fb-item"><span class="fb-icon">💧</span><div><strong>Eco-Friendly</strong><p>Safe products used</p></div></div>
+<div class="fb-item"><span class="fb-icon">⏱️</span><div><strong>Fast &amp; Efficient</strong><p>Value for your time</p></div></div>
+<div class="fb-item"><span class="fb-icon">🚗</span><div><strong>Mobile Service</strong><p>We come to you</p></div></div>
+<div class="fb-item"><span class="fb-icon">⭐</span><div><strong>Top Rated</strong><p>Trusted by hundreds</p></div></div>
+</div></div>
+</section>
+<section class="section bg-light" id="services">
+<div class="container"><div class="section-header"><span class="tag">Our Services</span><h2>Detailing Packages</h2></div>
+<div class="services-grid">
+<div class="svc-card"><div class="svc-img ph-1" style=" background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://loremflickr.com/800/600/Express,Wash?lock=1') !important; background-size: cover !important; background-position: center !important; color: white !important; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">Express Wash</div><div class="svc-content"><h3>Express Wash</h3><p>Exterior hand wash, wheel cleaning, and tire dressing. Perfect for weekly maintenance.</p><button class="btn btn-small btn-full" onclick="bookSvc('Express Wash')">Book Service</button></div></div>
+<div class="svc-card featured"><div class="svc-badge">Most Popular</div><div class="svc-img ph-2" style=" background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://loremflickr.com/800/600/Full,Valet?lock=2') !important; background-size: cover !important; background-position: center !important; color: white !important; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">Full Valet</div><div class="svc-content"><h3>Full Valet</h3><p>Comprehensive interior vacuuming, dashboard treatment, and full exterior detailing.</p><button class="btn btn-primary btn-full" onclick="bookSvc('Full Valet')">Book Service</button></div></div>
+<div class="svc-card"><div class="svc-img ph-3" style=" background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://loremflickr.com/800/600/Showroom,Detail?lock=3') !important; background-size: cover !important; background-position: center !important; color: white !important; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">Showroom Detail</div><div class="svc-content"><h3>Showroom Detail</h3><p>Paint decontamination, machine polish, premium wax, and deep interior extraction.</p><button class="btn btn-small btn-full" onclick="bookSvc('Showroom Detail')">Book Service</button></div></div>
+</div></div>
+</section>
+<section class="section split-section" id="mobile">
+<div class="container"><div class="split-grid">
+<div class="split-content">
+<span class="tag">We Come To You</span>
+<h2>Mobile Valeting Services</h2>
+<p>Don't have time to visit us? Pritt Auto Shine offers fully equipped mobile valeting vans that come directly to your home or office.</p>
+<ul class="check-list">
+<li>✓ Fully equipped with water and power</li>
+<li>✓ No mess left behind</li>
+<li>✓ Available at your home or workplace</li>
+<li>✓ Same premium quality, ultimate convenience</li>
+</ul>
+<a class="btn btn-primary" href="#booking" onclick="bookSvc('Mobile Valeting')">Book Mobile Valet</a>
+</div>
+<div class="split-img" style=" background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://loremflickr.com/800/600/Mobile,Detailing,Van?lock=4') !important; background-size: cover !important; background-position: center !important; color: white !important; text-shadow: 0 2px 4px rgba(0,0,0,0.8);"><div class="ph-van" style=" background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://loremflickr.com/800/600/Mobile,Detailing,Van?lock=5') !important; background-size: cover !important; background-position: center !important; color: white !important; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">Mobile Detailing Van</div></div>
+</div></div>
+</section>
+<section class="section bg-light" id="booking">
+<div class="container"><div class="section-header"><span class="tag">Online Booking</span><h2>Schedule Your Shine</h2></div>
+<div class="booking-wrap">
+<form class="booking-form" id="bookingForm">
+<div class="form-row"><div class="form-group"><label>Full Name</label><input name="name" required="" type="text"/></div><div class="form-group"><label>Phone Number</label><input name="phone" required="" type="tel"/></div></div>
+<div class="form-row"><div class="form-group"><label>Vehicle Make/Model</label><input name="car" required="" type="text"/></div><div class="form-group"><label>Service Type</label><select id="svcSelect" name="service" required=""><option value="">Select a package</option><option>Express Wash</option><option>Full Valet</option><option>Showroom Detail</option><option>Mobile Valeting</option></select></div></div>
+<div class="form-group" id="addressGrp"><label>Service Address (if Mobile Valeting)</label><input name="address" placeholder="Enter your location" type="text"/></div>
+<div class="form-row"><div class="form-group"><label>Preferred Date</label><input name="date" required="" type="date"/></div><div class="form-group"><label>Preferred Time</label><input name="time" required="" type="time"/></div></div>
+<button class="btn btn-primary btn-full" type="submit">Confirm Booking</button>
+</form>
+</div></div>
+</section>
+<footer class="footer" id="contact"><div class="container"><div class="footer-grid">
+<div class="f-brand"><h3>PRITT<span class="accent">SHINE</span></h3><p>Premium auto detailing and mobile valeting services across Nairobi.</p></div>
+<div class="f-contact"><h4>Contact Us</h4><p>📍 Westlands, Nairobi</p><p>📞 +254 700 000001</p><p>✉️ hello@prittautoshine.co.ke</p></div>
+<div class="f-hours"><h4>Business Hours</h4><p>Monday - Saturday: 8am - 6pm</p><p>Sunday: Closed</p></div>
+</div>
+<div class="f-bottom"><p>© 2024 Pritt Auto Shine. All rights reserved. <a href="admin.html">Admin Login</a></p></div></div></footer>
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
 </body></html>
